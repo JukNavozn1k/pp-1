@@ -49,7 +49,9 @@ def parallel_strassen(A, B, threshold=64):
       - threshold: при размере матрицы <= threshold используется обычное умножение
     """
     n = len(A)
-   
+    if n <= threshold:
+        return conventional_multiply(A, B)
+    
     # Разбиваем матрицы на 4 подматрицы
     A11, A12, A21, A22 = split_matrix(A)
     B11, B12, B21, B22 = split_matrix(B)
