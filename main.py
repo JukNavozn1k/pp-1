@@ -121,7 +121,7 @@ if __name__ == '__main__':
         [4, 3, 2, 1]
     ]
     
-    C = strassen_multiply(A, B, threshold=2, max_depth=2)
+    C = strassen_multiply(A, B, threshold=2, max_depth=25)
     
     print("Результат умножения:")
     for row in C:
