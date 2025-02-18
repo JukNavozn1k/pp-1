@@ -112,7 +112,7 @@ if __name__ == '__main__':
     ]
     
     # Для теста можно использовать маленький threshold, чтобы рекурсия шла глубже
-    C = parallel_strassen(A, B, threshold=1)
+    C = parallel_strassen(A, B, threshold=2)
     
     print("Результат умножения:")
     for row in C:
