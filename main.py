@@ -92,21 +92,37 @@ def generate_square_matrix(n, min_value=0, max_value=100):
     return [[random.randint(min_value, max_value) for _ in range(n)] for _ in range(n)]
 
 
+def print_matrix(msg, matrix):
+    print(msg)
+    for row in matrix:
+        print(row)
 
+def validate_matrices(matrix1, matrix2):
+   
+    if len(matrix1) != len(matrix2):
+        return False
+    if len(matrix1[0]) != len(matrix2[0]):
+        return False
+    
+   
+    for i in range(len(matrix1)):
+        for j in range(len(matrix1[0])):
+            if matrix1[i][j] != matrix2[i][j]:
+                return False
+    return True
 
 if __name__ == '__main__':
-    n = 16
+    n = 2
     threshold=2
 
     A = generate_square_matrix(n)
     B = generate_square_matrix(n)
     C = parallel_strassen(A, B, threshold=threshold)
-    
-    print("Результат алгоритма:")
-    for row in C:
-        print(row)
-    
-    C = conventional_multiply(A, B)
-    print("Результат обычного умножения:")
-    for row in C:
-        print(row)
+    C_STANDART = conventional_multiply(A, B)
+
+    print_matrix('Матрица A:', A)
+    print_matrix('Матрица B:', B)
+    print_matrix('Результат умножения:', C)
+    print_matrix('Результат умножения стандартным методом:', C_STANDART)
+   
+    assert (validate_matrices(C, C_STANDART))
