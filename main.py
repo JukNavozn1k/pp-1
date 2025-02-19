@@ -95,10 +95,12 @@ def generate_square_matrix(n, min_value=0, max_value=100):
 
 
 if __name__ == '__main__':
-    n = 4 
+    n = 16
+    threshold=2
+
     A = generate_square_matrix(n)
     B = generate_square_matrix(n)
-    C = parallel_strassen(A, B, threshold=2)
+    C = parallel_strassen(A, B, threshold=threshold)
     
     print("Результат алгоритма:")
     for row in C:
